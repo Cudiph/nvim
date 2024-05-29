@@ -377,6 +377,7 @@ local plugins      = {
         event = { "BufReadPost", "BufNewFile" },
         cmd   = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
         build = ":TSUpdate",
+        main  = "nvim-treesitter.configs",
         opts  = treesitter_o,
     },
 

@@ -1,0 +1,60 @@
+local M = {}
+
+M.base_30 = {
+    white         = "#cccccc",
+    darker_black  = "#0a110d",
+    black         = "#101713",
+    black2        = "#222925",
+    one_bg        = "#2b322e",
+    one_bg2       = "#323935",
+    one_bg3       = "#3c433f",
+    grey          = "#423e44",
+    grey_fg       = "#525753",
+    grey_fg2      = "#67706a",
+    light_grey    = "#7a7a7a",
+    red           = "#f08e97",
+    baby_pink     = "#fe95cc",
+    pink          = "#fcb2f3",
+    line          = "#222925",
+    green         = "#a7e1a4",
+    vibrant_green = "#b1ebae",
+    nord_blue     = "#98c3d9",
+    blue          = "#a5d0e6",
+    yellow        = "#ffefa7",
+    sun           = "#ffffa8",
+    purple        = "#c8a6e1",
+    dark_purple   = "#b18fca",
+    teal          = "#a1e1d5",
+    orange        = "#f9b486",
+    cyan          = "#a7f1ff",
+    -- statusline_bg = "#161d19",
+    statusline_bg = "#161616",
+    lightbg       = "#212824",
+    lightbg2      = "#181f1b",
+    pmenu_bg      = "#a7e1a4",
+    folder_bg     = "#ffefa7",
+    lavender      = "#b4b8e6",
+}
+
+M.base_16 = {
+    base00 = "#101713",
+    base01 = "#222020",
+    base02 = "#2f2f2f",
+    base03 = "#363838",
+    base04 = "#414141",
+    base05 = "#efefef",
+    base06 = "#ccdbef",
+    base07 = "#cccccc",
+    base08 = "#f08e97",
+    base09 = "#f9b486",
+    base0A = "#ffefa7",
+    base0B = "#a7e1a4",
+    base0C = "#a7f1ff",
+    base0D = "#89B4FA",
+    base0E = "#c8a6e1",
+    base0F = "#ff9a9f",
+}
+
+M.type = "dark"
+
+return M

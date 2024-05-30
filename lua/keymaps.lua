@@ -12,6 +12,11 @@ map("n", "<leader>rn", function ()
     return ":IncRename " .. vim.fn.expand("<cword>")
 end, { expr = true })
 
+-- Leap
+vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward)", { desc = "Leap forward"})
+vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward)", { desc = "Leap backward"})
+vim.keymap.set({ "n", "x", "o" }, "gs", "<Plug>(leap-from-window)", { desc = "Leap from window"})
+
 -- Windowing
 map("n", "<c-h>", "<c-w>h", { desc = "Go to the left window" })
 map("n", "<c-j>", "<c-w>j", { desc = "Go to the down window" })

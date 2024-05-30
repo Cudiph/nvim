@@ -150,6 +150,7 @@ local plugins      = {
             "saadparwaiz1/cmp_luasnip",
             "petertriho/cmp-git",
             "onsails/lspkind.nvim",
+            "rafamadriz/friendly-snippets",
         },
         config       = cmp_cfg,
     },
@@ -205,20 +206,6 @@ local plugins      = {
         opts  = {},
     },
 
-    {
-        "max397574/better-escape.nvim",
-        event  = "InsertEnter",
-        config = function ()
-            require("better_escape").setup {
-                mapping = { "jk" },
-            }
-        end,
-    },
-
-    {
-        "psliwka/vim-smoothie",
-        event = "WinScrolled",
-    },
 
     {
         "eraserhd/parinfer-rust",
@@ -303,6 +290,34 @@ local plugins      = {
         dependencies = {
             "kevinhwang91/promise-async",
         },
+    },
+
+    -- Motion
+    {
+        "kylechui/nvim-surround",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+        opts = {},
+    },
+
+    {
+        "psliwka/vim-smoothie",
+        event = "WinScrolled",
+    },
+
+    {
+        "max397574/better-escape.nvim",
+        event  = "InsertEnter",
+        config = function ()
+            require("better_escape").setup {
+                mapping = { "jk" },
+            }
+        end,
+    },
+
+    {
+        "ggandor/leap.nvim",
+        lazy = false,
     },
 
     -- UI / Looks

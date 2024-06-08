@@ -35,10 +35,12 @@ local mason_pkgs = {
 
         -- Formatter
         "asmfmt",
+        "bibtex-tidy",
         "black",
         "clang-format",
         "csharpier",
         "gofumpt",
+        "latexindent",
         "nixpkgs-fmt",
         "php-cs-fixer",
         "prettier",
@@ -51,6 +53,7 @@ local mason_pkgs = {
     },
 }
 
+-- Credits to NvChad
 function M()
     require("mason").setup {}
     vim.api.nvim_create_user_command("MasonInstallAll", function ()

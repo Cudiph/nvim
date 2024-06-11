@@ -28,7 +28,7 @@ local function M()
     conform.setup(opts)
 
     conform.formatters["clang-format"] = {
-        prepend_args = { "--style", "{IndentWidth: 4}" },
+        prepend_args = { "--fallback-style=WebKit" },
     }
 end
 

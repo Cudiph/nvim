@@ -1,6 +1,6 @@
 local prettier = { "prettierd", "prettier" }
 
-return {
+local opts = {
     formatters_by_ft = {
         python     = { "black" },
         javascript = { prettier },
@@ -22,3 +22,14 @@ return {
         yaml       = { "yamlfmt" },
     },
 }
+
+local function M()
+    local conform = require("conform")
+    conform.setup(opts)
+
+    conform.formatters["clang-format"] = {
+        prepend_args = { "--style", "{IndentWidth: 4}" },
+    }
+end
+
+return M

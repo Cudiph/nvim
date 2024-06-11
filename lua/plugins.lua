@@ -1,5 +1,5 @@
 local catppuccin_o = require("configs.catppuccin")
-local conform_o    = require("configs.conform")
+local conform_cfg  = require("configs.conform")
 local neotree_o    = require("configs.neotree")
 local treesitter_o = require("configs.treesitter")
 local cmp_cfg      = require("configs.nvim-cmp")
@@ -166,9 +166,9 @@ local plugins      = {
 
     {
         "stevearc/conform.nvim",
-        event = { "BufWritePre" },
-        cmd   = { "ConformInfo" },
-        keys  = {
+        event  = { "BufWritePre" },
+        cmd    = { "ConformInfo" },
+        keys   = {
             {
                 -- Customize or remove this keymap to your liking
                 "<leader>fm",
@@ -179,7 +179,7 @@ local plugins      = {
                 desc = "Format buffer",
             },
         },
-        opts  = conform_o,
+        config = conform_cfg,
     },
 
     -- UX
@@ -277,9 +277,8 @@ local plugins      = {
 
     {
         "folke/trouble.nvim",
-        cmd = { "Trouble", "TroubleClose", "TroubleToggle", "TroubleRefresh" },
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {},
+        opts = {}, -- for default options, refer to the configuration section for custom setup.
+        cmd = "Trouble",
     },
 
     {

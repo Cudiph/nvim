@@ -13,9 +13,9 @@ map("n", "<leader>rn", function ()
 end, { expr = true })
 
 -- Leap
-vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward)", { desc = "Leap forward"})
-vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward)", { desc = "Leap backward"})
-vim.keymap.set({ "n", "x", "o" }, "gs", "<Plug>(leap-from-window)", { desc = "Leap from window"})
+vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward)", { desc = "Leap forward" })
+vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward)", { desc = "Leap backward" })
+vim.keymap.set({ "n", "x", "o" }, "gs", "<Plug>(leap-from-window)", { desc = "Leap from window" })
 
 -- Windowing
 map("n", "<c-h>", "<c-w>h", { desc = "Go to the left window" })
@@ -79,11 +79,8 @@ map("n", "<F12>", function () require("dap").step_out() end, { desc = "DAP step 
 map("n", "<leader>fs", "<cmd>Oil<CR>", { desc = "Manage files as buffer" })
 
 -- diagnostics view
-map("n", "<leader>zx", function () require("trouble").toggle() end, { desc = "Toggle Trouble" })
-map("n", "<leader>zw", function () require("trouble").toggle("workspace_diagnostics") end,
-    { desc = "Toggle Trouble diagnostics (workspace)" })
-map("n", "<leader>zd", function () require("trouble").toggle("document_diagnostics") end,
-    { desc = "Toggle Trouble diagnositcs (document)" })
-map("n", "<leader>zq", function () require("trouble").toggle("quickfix") end, { desc = "Toggle Trouble quickfix" })
-map("n", "<leader>zl", function () require("trouble").toggle("loclist") end, { desc = "Toggle Trouble loclist" })
-map("n", "gR", function () require("trouble").toggle("lsp_references") end, { desc = "Toggle Trouble lsp references" })
+map("n", "<leader>zx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Toggle Trouble" })
+map("n", "<leader>zX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Toggle Trouble" })
+map("n", "<leader>zq", "<cmd>Trouble quickfix<cr>", { desc = "Toggle Trouble quickfix" })
+map("n", "<leader>zl", "<cmd>Trouble loclist<cr>", { desc = "Toggle Trouble loclist" })
+map("n", "<leader>zr", "<cmd>Trouble lsp_references toggle<cr>", { desc = "Toggle Trouble lsp references" })

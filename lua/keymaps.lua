@@ -84,3 +84,6 @@ map("n", "<leader>zX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { des
 map("n", "<leader>zq", "<cmd>Trouble quickfix<cr>", { desc = "Toggle Trouble quickfix" })
 map("n", "<leader>zl", "<cmd>Trouble loclist<cr>", { desc = "Toggle Trouble loclist" })
 map("n", "<leader>zr", "<cmd>Trouble lsp_references toggle<cr>", { desc = "Toggle Trouble lsp references" })
+
+-- Notifications
+map("n", "<leader>nc", "<cmd>NoiceDismiss<cr>", { desc = "Clear all notification" })

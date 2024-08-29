@@ -227,18 +227,36 @@ local plugins      = {
 
     {
         "folke/persistence.nvim",
-        event = "BufReadPre",
-        opts  = {
+        event  = "BufReadPre",
+        config = function (_, opts)
+            local autocmd = vim.api.nvim_create_autocmd
+
+            autocmd("User", {
+                pattern = "PersistenceLoadPre",
+                callback = function ()
+                    -- loading session with neotree opened is buggy
+                    vim.cmd("Neotree close")
+                end,
+            })
+
+            autocmd("User", {
+                pattern = "PersistenceLoadPost",
+                callback = function ()
+                    -- close oil.nvim buffer
+                    local bufname = vim.fn.getcwd()
+                    if vim.fn.bufexists(bufname) == 1 then
+                        vim.cmd("BufferDelete " .. bufname)
+                    end
+                end,
+            })
+
+            require("persistence").setup(opts)
+        end,
+        opts   = {
             pre_load = function ()
-                -- loading session with neotree opened is buggy
-                vim.cmd("Neotree close")
             end,
             post_load = function ()
-                -- close oil.nvim buffer
-                local bufname = vim.fn.getcwd()
-                if vim.fn.bufexists(bufname) == 1 then
-                    vim.cmd("BufferDelete " .. bufname)
-                end
+
             end,
         },
     },

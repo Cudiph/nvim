@@ -1,12 +1,12 @@
-local prettier = { "prettierd", "prettier" }
+local prettier = { "prettierd", "prettier", stop_after_first = true }
 
 local opts = {
     formatters_by_ft = {
         python     = { "black" },
-        javascript = { prettier },
-        markdown   = { prettier },
+        javascript = prettier,
+        markdown   = prettier,
         rust       = { "rustfmt" },
-        html       = { prettier },
+        html       = prettier,
         php        = { "php_cs_fixer" },
         go         = { "gofumpt" },
         sh         = { "shfmt" },

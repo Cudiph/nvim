@@ -252,13 +252,6 @@ local plugins      = {
 
             require("persistence").setup(opts)
         end,
-        opts   = {
-            pre_load = function ()
-            end,
-            post_load = function ()
-
-            end,
-        },
     },
 
     {

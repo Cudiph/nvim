@@ -7,3 +7,8 @@
 ```console
 git clone https://github.com/cudiph/nvim ~/.config/nvim/
 ```
+
+## Requirements
+
+- neovim >= 0.10.0
+- python-send2trash

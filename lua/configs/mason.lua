@@ -5,6 +5,7 @@ local mason_pkgs = {
         "awk-language-server",
         "bash-language-server",
         "clangd",
+        "csharp-language-server",
         "css-lsp",
         "deno",
         "dockerfile-language-server",

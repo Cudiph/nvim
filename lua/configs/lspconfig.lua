@@ -48,7 +48,7 @@ function M()
         "sqlls",
         "svelte",
         "texlab",
-        "tsserver",
+        "ts_ls",
         "yamlls",
         "zls",
     }

@@ -17,6 +17,7 @@ local opt_config = {
     termguicolors = true,
     laststatus = 3, -- always show statusline
     cursorline = true,
+    ignorecase = true,
 
     -- ufo nvim
     fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:",

@@ -1,7 +1,6 @@
 local map = vim.keymap.set
 
 -- General
-map("n", "/", "/\\c", { desc = "Save" })
 map("n", "<C-s>", "<cmd>w<CR>", { desc = "Save" })
 map("i", "<C-h>", "<Left>", { desc = "move left" })
 map("i", "<C-l>", "<Right>", { desc = "move right" })

@@ -115,7 +115,6 @@ function M()
             { name = "nvim_lsp" },
             { name = "path" },
             { name = "buffer" },
-            { name = "cmdline" },
             { name = "emoji" },
             { name = "nvim_lua" },
             { name = "luasnip" }, -- For luasnip users.

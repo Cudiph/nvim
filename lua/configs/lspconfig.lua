@@ -49,7 +49,6 @@ function M()
         "svelte",
         "texlab",
         "ts_ls",
-        "yamlls",
         "zls",
     }
 
@@ -70,6 +69,17 @@ function M()
                 },
             },
         },
+    }
+
+    local yamllscaps = vim.lsp.protocol.make_client_capabilities()
+    yamllscaps.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+    }
+
+    lspconfig.yamlls.setup {
+        on_attach = on_attach,
+        capabilities = yamllscaps,
     }
 end
 

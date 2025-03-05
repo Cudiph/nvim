@@ -62,6 +62,11 @@ autocmd({ "BufWritePost" }, {
     end,
 })
 
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    pattern = "*Jenkinsfile",
+    command = "set filetype=groovy"
+})
+
 -- init
 require("plugins")
 require("keymaps")

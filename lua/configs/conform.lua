@@ -20,6 +20,7 @@ local opts = {
         bib        = { "bibtex-tidy" },
         xml        = { "xmlformat" },
         yaml       = { "yamlfmt" },
+        groovy     = { "npm-groovy-lint" },
     },
 }
 

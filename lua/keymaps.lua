@@ -25,17 +25,17 @@ map("n", "<c-l>", "<c-w>l", { desc = "Go to the right window" })
 map("n", "<c-q>", "<cmd>quit<cr>", { desc = "Quit" })
 
 -- Fuzzy finder
-map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
-map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "telescope find buffers" })
-map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
-map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
-map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
-map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
-map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
-map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "telescope find files" })
-map("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
-    { desc = "telescope find all files" })
+map("n", "<leader>fw", "<cmd>FzfLua live_grep<CR>", { desc = "FzfLua live grep" })
+map("n", "<leader>fb", "<cmd>FzfLua buffers<CR>", { desc = "FzfLua find buffers" })
+map("n", "<leader>fh", "<cmd>FzfLua helptags<CR>", { desc = "FzfLua help page" })
+map("n", "<leader>ma", "<cmd>FzfLua marks<CR>", { desc = "FzfLua find marks" })
+map("n", "<leader>fo", "<cmd>FzfLua oldfiles<CR>", { desc = "FzfLua find oldfiles" })
+map("n", "<leader>fz", "<cmd>FzfLua lgrep_curbuf<CR>", { desc = "FzfLua find in current buffer" })
+map("n", "<leader>gc", "<cmd>FzfLua git_commits<CR>", { desc = "FzfLua git commits" })
+map("n", "<leader>gt", "<cmd>FzfLua git_status<CR>", { desc = "FzfLua git status" })
+map("n", "<leader>ff", "<cmd>FzfLua files<cr>", { desc = "FzfLua find files" })
+map("n", "<leader>fa", "<cmd>FzfLua find_files follow=true no_ignore=true hidden=true<CR>",
+    { desc = "FzfLua find all files" })
 
 -- Buffers
 map("n", "<tab>", "<cmd>BufferNext<CR>", { desc = "Goto next buffer" })

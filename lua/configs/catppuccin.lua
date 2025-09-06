@@ -1,6 +1,6 @@
 return {
     term_colors = true,
-    transparent_background = false,
+    transparent_background = true,
     color_overrides = {
         all = require("themes.darkpriccio_override"),
     },
@@ -59,5 +59,7 @@ return {
             enabled = true,
             style = "nvchad",
         },
+        fzf = true,
+        leap = true,
     },
 }

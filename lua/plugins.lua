@@ -45,7 +45,7 @@ local plugins      = {
         },
         dependencies = {
             "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
+            { "rcarriga/nvim-notify", opts = { background_colour = "#000000" } },
         },
     },
 
@@ -188,6 +188,20 @@ local plugins      = {
         tag          = "0.1.8",
         cmd          = "Telescope",
         dependencies = { "nvim-lua/plenary.nvim" },
+    },
+
+    {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        ---@type snacks.Config
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+            image = { enabled = true },
+            dashboard = { enabled = true },
+        },
     },
 
     {
@@ -455,7 +469,7 @@ local plugins      = {
         opts = catppuccin_o,
         config = function (_, opts)
             require("catppuccin").setup(opts)
-            vim.cmd("colorscheme catppuccin-mocha")
+            vim.cmd.colorscheme("catppuccin-mocha")
         end,
     },
 }

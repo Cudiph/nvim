@@ -208,6 +208,16 @@ local plugins      = {
         "ibhagwan/fzf-lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         cmd          = "FzfLua",
+        opts = {
+            keymap = {
+                fzf = {
+                    ["tab"] = "down",
+                    ["shift-tab"] = "up",
+                    ["ctrl-j"] = "toggle-out",
+                    ["ctrl-k"] = "toggle-in",
+                }
+            }
+        },
     },
 
     {

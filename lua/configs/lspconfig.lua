@@ -24,7 +24,7 @@ local function on_attach(_, bufnr)
 end
 
 function M()
-    local lspconfig = require "lspconfig"
+    local lspconfig = vim.lsp.config
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
     -- if you just want default config for the servers then put them in a table
@@ -53,13 +53,15 @@ function M()
     }
 
     for _, lsp in ipairs(servers) do
-        lspconfig[lsp].setup {
+        lspconfig(lsp, {
             on_attach = on_attach,
             capabilities = capabilities,
-        }
+        })
+        vim.lsp.enable(lsp)
     end
 
-    lspconfig.lua_ls.setup {
+    ----- luals -----
+    lspconfig("lua_ls", {
         on_attach = on_attach,
         capabilities = capabilities,
         settings = {
@@ -69,7 +71,8 @@ function M()
                 },
             },
         },
-    }
+    })
+    vim.lsp.enable("lua_ls")
 
     local yamllscaps = vim.lsp.protocol.make_client_capabilities()
     yamllscaps.textDocument.foldingRange = {
@@ -77,10 +80,12 @@ function M()
         lineFoldingOnly = true,
     }
 
-    lspconfig.yamlls.setup {
+    ---- yamlls ----
+    lspconfig("yamlls", {
         on_attach = on_attach,
         capabilities = yamllscaps,
-    }
+    })
+    vim.lsp.enable("yamlls")
 end
 
 return M

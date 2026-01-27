@@ -431,6 +431,7 @@ local plugins      = {
                 end)
             end)
 
+            vim.keymap.del("n", "<CR>")
             -- Customize how cursors look.
             local hl = vim.api.nvim_set_hl
             hl(0, "MultiCursorCursor", { link = "Cursor" })

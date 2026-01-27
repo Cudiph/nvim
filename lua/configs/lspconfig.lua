@@ -86,6 +86,12 @@ function M()
         capabilities = yamllscaps,
     })
     vim.lsp.enable("yamlls")
+
+    ----- qmlls ----
+    lspconfig("qmlls", {
+        cmd = { "qmlls6" },
+    })
+    vim.lsp.enable("qmlls")
 end
 
 return M

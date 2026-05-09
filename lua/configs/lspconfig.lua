@@ -89,7 +89,7 @@ function M()
 
     ----- qmlls ----
     lspconfig("qmlls", {
-        cmd = { "qmlls6" },
+        cmd = { "qmlls6", "-E" },
     })
     vim.lsp.enable("qmlls")
 end

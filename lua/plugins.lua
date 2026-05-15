@@ -511,12 +511,9 @@ local plugins      = {
     },
 
     {
-        "nvim-treesitter/nvim-treesitter",
-        event = { "BufReadPost", "BufNewFile" },
-        cmd   = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
-        build = ":TSUpdate",
-        main  = "nvim-treesitter.configs",
-        opts  = treesitter_o,
+        "romus204/tree-sitter-manager.nvim",
+        opts = treesitter_o,
+        event = "BufReadPre"
     },
 
     {

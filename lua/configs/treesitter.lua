@@ -23,6 +23,7 @@ return {
         "go",
         "gosum",
         "gomod",
+        "groovy",
         "haskell",
         "hlsl",
         "html",
@@ -75,8 +76,5 @@ return {
         "yuck",
         "zig",
     },
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
+    highlight = true,
 }

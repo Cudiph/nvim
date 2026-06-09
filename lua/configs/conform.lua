@@ -21,6 +21,7 @@ local opts = {
         xml        = { "xmlformat" },
         yaml       = { "yamlfmt" },
         groovy     = { "npm-groovy-lint" },
+        qmlls      = { "qmlformat" },
     },
 }
 

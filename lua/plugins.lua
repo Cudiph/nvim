@@ -238,12 +238,6 @@ local plugins      = {
     },
 
     {
-        "numToStr/Comment.nvim",
-        event = "BufRead",
-        opts  = {},
-    },
-
-    {
         "akinsho/toggleterm.nvim",
         version = "*",
         config  = true,

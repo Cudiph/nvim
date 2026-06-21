@@ -49,6 +49,9 @@ vim.diagnostic.config {
     },
 }
 
+-- sessions
+vim.opt.sessionoptions = { "globals", "tabpages", "buffers", "curdir", "winsize", "winpos" }
+
 -- autocmd
 autocmd("VimResized", {
     pattern = "*",
@@ -62,9 +65,9 @@ autocmd({ "BufWritePost" }, {
     end,
 })
 
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = "*Jenkinsfile",
-    command = "set filetype=groovy"
+    command = "set filetype=groovy",
 })
 
 -- init

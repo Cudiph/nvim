@@ -13,9 +13,9 @@ map("n", "<leader>rn", function ()
 end, { expr = true })
 
 -- Leap
-vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward)", { desc = "Leap forward" })
-vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward)", { desc = "Leap backward" })
-vim.keymap.set({ "n", "x", "o" }, "gs", "<Plug>(leap-from-window)", { desc = "Leap from window" })
+map({ "n", "x", "o" }, "s", "<Plug>(leap-forward)", { desc = "Leap forward" })
+map({ "n", "x", "o" }, "S", "<Plug>(leap-backward)", { desc = "Leap backward" })
+map({ "n", "x", "o" }, "gs", "<Plug>(leap-from-window)", { desc = "Leap from window" })
 
 -- Windowing
 map("n", "<c-h>", "<c-w>h", { desc = "Go to the left window" })
@@ -55,12 +55,6 @@ map({ "n", "t" }, "<A-v>", "<cmd>ToggleTerm direction=vertical size=60 name=vert
 map({ "n", "t" }, "<A-h>", "<cmd>ToggleTerm direction=horizontal name=horizontal<CR>",
     { desc = "Toggle terminal floating" })
 map({ "n", "t" }, "<A-t>", "<cmd>ToggleTerm direction=tab name=tab<CR>", { desc = "Toggle terminal tab" })
-
--- Session manager
-map("n", "<leader>ql", [[<cmd>lua require("persistence").load()<cr>]], { desc = "load session for cwd" })
-map("n", "<leader>qa", [[<cmd>lua require("persistence").load({ last = true })<cr>]], { desc = "load last session" })
-map("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr>]],
-    { desc = "stop Persistence => session won't be saved on exit" })
 
 -- DAP
 map("n", "<leader>dt", function () require("dapui").toggle() end, { desc = "Toggle DAP breakpoint" })

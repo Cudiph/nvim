@@ -244,32 +244,44 @@ local plugins      = {
     },
 
     {
-        "folke/persistence.nvim",
-        event  = "BufReadPre",
-        config = function (_, opts)
-            local autocmd = vim.api.nvim_create_autocmd
-
-            autocmd("User", {
-                pattern = "PersistenceLoadPre",
+        "stevearc/resession.nvim",
+        dependencies = {
+            "romgrk/barbar.nvim",
+        },
+        opts = {
+            extensions = {
+                barbar = {
+                    enable_in_tab = true,
+                },
+            },
+            autosave = {
+                enabled = true,
+                interval = 60,
+                notify = true,
+            },
+        },
+        init = function ()
+            vim.api.nvim_create_autocmd("VimLeavePre", {
                 callback = function ()
-                    -- loading session with neotree opened is buggy
-                    vim.cmd("Neotree close")
-                end,
-            })
-
-            autocmd("User", {
-                pattern = "PersistenceLoadPost",
-                callback = function ()
-                    -- close oil.nvim buffer
-                    local bufname = vim.fn.getcwd()
-                    if vim.fn.bufexists(bufname) == 1 then
-                        vim.cmd("BufferDelete " .. bufname)
+                    local resession = require("resession")
+                    if (resession.get_current_session_info() ~= nil) then
+                        resession.save_tab(nil, { dir = vim.fn.getcwd() })
                     end
                 end,
             })
-
-            require("persistence").setup(opts)
         end,
+        keys = {
+            { "<leader>ss", function () require("resession").save_tab(nil, { dir = vim.fn.getcwd() }) end, desc = "save sessions" },
+            {
+                "<leader>sl",
+                function ()
+                    require("resession").load(nil, { reset = true, dir = vim.fn.getcwd() })
+                end,
+                desc = "load session",
+            },
+            { "<leader>sd", function () require("resession").delete(nil, { dir = vim.fn.getcwd() }) end,   desc = "delete session" },
+
+        },
     },
 
     {
@@ -507,7 +519,7 @@ local plugins      = {
     {
         "romus204/tree-sitter-manager.nvim",
         opts = treesitter_o,
-        event = "BufReadPre"
+        event = "BufReadPre",
     },
 
     {

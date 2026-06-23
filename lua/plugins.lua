@@ -264,14 +264,39 @@ local plugins      = {
             vim.api.nvim_create_autocmd("VimLeavePre", {
                 callback = function ()
                     local resession = require("resession")
-                    if (resession.get_current_session_info() ~= nil) then
+                    local ls = resession.list { dir = vim.fn.getcwd() }
+                    vim.cmd("Neotree close")
+
+                    if resession.get_current_session_info() ~= nil then
                         resession.save_tab(nil, { dir = vim.fn.getcwd() })
+                    elseif resession.get_current_session_info() == nil and not vim.tbl_contains(ls, "last") then
+                        resession.save_tab("last", { dir = vim.fn.getcwd() })
                     end
                 end,
             })
+
+            vim.api.nvim_create_autocmd("VimEnter", {
+                callback = function ()
+                    local resession = require("resession")
+                    local ls = resession.list { dir = vim.fn.getcwd() }
+
+                    if vim.fn.argc(-1) == 0 and not vim.g.using_stdin and vim.tbl_contains(ls, "last") then
+                        resession.load("last", { reset = true, dir = vim.fn.getcwd(), silence_errors = true })
+                        vim.treesitter.start()
+                    end
+                end,
+                nested = true,
+            })
         end,
         keys = {
-            { "<leader>ss", function () require("resession").save_tab(nil, { dir = vim.fn.getcwd() }) end, desc = "save sessions" },
+            {
+                "<leader>ss",
+                function ()
+                    vim.cmd("Neotree close")
+                    require("resession").save_tab(nil, { dir = vim.fn.getcwd() })
+                end,
+                desc = "save sessions",
+            },
             {
                 "<leader>sl",
                 function ()
@@ -279,7 +304,7 @@ local plugins      = {
                 end,
                 desc = "load session",
             },
-            { "<leader>sd", function () require("resession").delete(nil, { dir = vim.fn.getcwd() }) end,   desc = "delete session" },
+            { "<leader>sd", function () require("resession").delete(nil, { dir = vim.fn.getcwd() }) end, desc = "delete session" },
 
         },
     },

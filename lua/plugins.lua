@@ -282,7 +282,6 @@ local plugins      = {
 
                     if vim.fn.argc(-1) == 0 and not vim.g.using_stdin and vim.tbl_contains(ls, "last") then
                         resession.load("last", { reset = true, dir = vim.fn.getcwd(), silence_errors = true })
-                        vim.treesitter.start()
                     end
                 end,
                 nested = true,
@@ -545,6 +544,13 @@ local plugins      = {
         "romus204/tree-sitter-manager.nvim",
         opts = treesitter_o,
         event = "BufReadPre",
+        init = function ()
+            vim.api.nvim_create_autocmd("BufReadPost", {
+                pattern = "*",
+                callback = function () vim.treesitter.start() end,
+                once = true,
+            })
+        end,
     },
 
     {

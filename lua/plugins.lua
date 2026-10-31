@@ -540,15 +540,36 @@ local plugins      = {
         end,
     },
 
+    -- {
+    --     "romus204/tree-sitter-manager.nvim",
+    --     opts = treesitter_o,
+    --     event = "BufReadPre",
+    --     init = function ()
+    --         vim.api.nvim_create_autocmd("BufReadPost", {
+    --             pattern = "*",
+    --             callback = function () vim.treesitter.start() end,
+    --             once = true,
+    --         })
+    --     end,
+    -- },
+
     {
-        "romus204/tree-sitter-manager.nvim",
-        opts = treesitter_o,
-        event = "BufReadPre",
-        init = function ()
+        "nvim-treesitter/nvim-treesitter",
+        lazy  = false,
+        build = ":TSUpdate",
+        opts  = treesitter_o,
+        init  = function ()
+            require("nvim-treesitter").install(treesitter_o.ensure_installed)
+
             vim.api.nvim_create_autocmd("BufReadPost", {
                 pattern = "*",
-                callback = function () vim.treesitter.start() end,
-                once = true,
+                callback = function (ev)
+                    local ft = vim.bo[ev.buf].filetype
+                    local lang = vim.treesitter.language.get_lang(ft)
+                    for _, v in ipairs(treesitter_o.ensure_installed) do
+                        if lang == v then vim.treesitter.start() end
+                    end
+                end,
             })
         end,
     },

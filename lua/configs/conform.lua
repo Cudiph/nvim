@@ -22,6 +22,7 @@ local opts = {
         yaml       = { "yamlfmt" },
         groovy     = { "npm-groovy-lint" },
         qmlls      = { "qmlformat" },
+        caddy      = { "caddy" },
     },
 }
 
@@ -31,6 +32,13 @@ local function M()
 
     conform.formatters["clang-format"] = {
         prepend_args = { "--fallback-style=WebKit" },
+    }
+
+    conform.formatters["caddy"] =
+    {
+        command = "caddy",
+        args = { "fmt", "-" },
+        stdin = true,
     }
 end
 

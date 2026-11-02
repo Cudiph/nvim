@@ -70,6 +70,16 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     command = "set filetype=groovy",
 })
 
+-- file
+vim.filetype.add {
+    extension = {
+        caddy = "caddy",
+    },
+    filename = {
+        Caddyfile = "caddy",
+    },
+}
+
 -- init
 require("plugins")
 require("keymaps")

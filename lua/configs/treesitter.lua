@@ -4,6 +4,7 @@ return {
         "asm",
         "bash",
         "c",
+        "caddy",
         "cpp",
         "c_sharp",
         "cmake",

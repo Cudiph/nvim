@@ -598,6 +598,70 @@ local plugins      = {
             require("kitty-scrollback").setup()
         end,
     },
+
+    {
+        "olimorris/codecompanion.nvim",
+        version = "^20.0.0",
+        lazy = false,
+        opts = {
+            adapters = {
+                http = {
+                    ollama = function ()
+                        return require("codecompanion.adapters").extend("ollama", {
+                            schema = {
+                                num_ctx = { default = 65536 },
+                                think = { default = true },
+                                keep_alive = { default = "30m" },
+                            },
+
+                            env = {
+                                url = os.getenv("OLLAMA_API_URL"),
+                                api_key = os.getenv("OLLAMA_API_KEY"),
+                            },
+                            headers = {
+                                -- ["Content-Type"] = "application/json",
+                                ["Authorization"] = "Bearer ${api_key}",
+                            },
+                        })
+                    end,
+                },
+            },
+
+            interactions = {
+                chat = {
+                    adapter = {
+                        name = "ollama",
+                        model = "qwen3.5:9b",
+                    },
+                },
+                inline = {
+                    adapter = {
+                        name = "ollama",
+                        model = "qwen3.5:9b",
+                    },
+                },
+            },
+
+        },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+    },
+
+    {
+        "OXY2DEV/markview.nvim",
+        lazy = false,
+        opts = {
+            preview = {
+                filetypes = { "codecompanion" },
+                ignore_buftypes = {},
+            },
+            markdown = {
+                enabled = false
+            },
+        },
+    },
 }
 
 local lazy_o       = {

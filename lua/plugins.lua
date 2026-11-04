@@ -1,15 +1,16 @@
-local catppuccin_o = require("configs.catppuccin")
-local neotree_o    = require("configs.neotree")
-local treesitter_o = require("configs.treesitter")
-local cmp_cfg      = require("configs.nvim-cmp")
-local conform_cfg  = require("configs.conform")
-local dap_cfg      = require("configs.nvim-dap")
-local gitsigns_cfg = require("configs.gitsigns")
-local lsp_cfg      = require("configs.lspconfig")
-local lualine_cfg  = require("configs.evil_lualine")
-local mason_cfg    = require("configs.mason")
+local catppuccin_o    = require("configs.catppuccin")
+local neotree_o       = require("configs.neotree")
+local treesitter_o    = require("configs.treesitter")
+local codecompanion_o = require("configs.codecompanion")
+local cmp_cfg         = require("configs.nvim-cmp")
+local conform_cfg     = require("configs.conform")
+local dap_cfg         = require("configs.nvim-dap")
+local gitsigns_cfg    = require("configs.gitsigns")
+local lsp_cfg         = require("configs.lspconfig")
+local lualine_cfg     = require("configs.evil_lualine")
+local mason_cfg       = require("configs.mason")
 
-local plugins      = {
+local plugins         = {
     -- Managers
     {
         "williamboman/mason.nvim",
@@ -598,9 +599,41 @@ local plugins      = {
             require("kitty-scrollback").setup()
         end,
     },
+
+    {
+        "olimorris/codecompanion.nvim",
+        version = "^20.0.0",
+        lazy = false,
+        opts = codecompanion_o,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            {
+                "olimorris/codecompanion.nvim",
+                dependencies = {
+                    --other plugins
+                    "ravitemer/codecompanion-history.nvim",
+                },
+            },
+            {
+                "OXY2DEV/markview.nvim",
+                lazy = false,
+                opts = {
+                    preview = {
+                        filetypes = { "codecompanion" },
+                        ignore_buftypes = {},
+                    },
+                    markdown = {
+                        enabled = false,
+                    },
+                },
+            },
+        },
+    },
+
 }
 
-local lazy_o       = {
+local lazy_o          = {
     performance = {
         rtp = {
             disabled_plugins = {
@@ -618,7 +651,7 @@ local lazy_o       = {
         },
     },
 }
-local lazypath     = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath        = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     vim.fn.system {
         "git",

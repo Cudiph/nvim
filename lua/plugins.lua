@@ -607,9 +607,12 @@ local plugins      = {
             adapters = {
                 http = {
                     ollama = function ()
+                        local ollama = require("codecompanion.adapters.http.ollama")
+                        local adapter_utils = require("codecompanion.adapters.utils")
+
                         return require("codecompanion.adapters").extend("ollama", {
                             schema = {
-                                num_ctx = { default = 65536 },
+                                num_ctx = { default = 32768 },
                                 think = { default = true },
                                 keep_alive = { default = "30m" },
                             },
@@ -622,6 +625,13 @@ local plugins      = {
                                 -- ["Content-Type"] = "application/json",
                                 ["Authorization"] = "Bearer ${api_key}",
                             },
+                            handlers = {
+                                form_messages = function (self, messages)
+                                    return ollama.handlers.form_messages(self,
+                                        adapter_utils.merge_system_messages(messages))
+                                end,
+                            },
+
                         })
                     end,
                 },
@@ -631,13 +641,13 @@ local plugins      = {
                 chat = {
                     adapter = {
                         name = "ollama",
-                        model = "qwen3.5:9b",
+                        model = os.getenv("OLLAMA_DEFAULT_MODEL"),
                     },
                 },
                 inline = {
                     adapter = {
                         name = "ollama",
-                        model = "qwen3.5:9b",
+                        model = os.getenv("OLLAMA_DEFAULT_MODEL"),
                     },
                 },
             },
@@ -658,7 +668,7 @@ local plugins      = {
                 ignore_buftypes = {},
             },
             markdown = {
-                enabled = false
+                enabled = false,
             },
         },
     },

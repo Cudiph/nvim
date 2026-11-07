@@ -652,10 +652,29 @@ local plugins      = {
                 },
             },
 
+            extensions = {
+                history = {
+                    enabled = true,
+                    opts = {
+                        summary = {
+                            create_summary_keymap = "gbc",
+                        },
+                    },
+                },
+
+            },
+
         },
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
+            {
+                "olimorris/codecompanion.nvim",
+                dependencies = {
+                    --other plugins
+                    "ravitemer/codecompanion-history.nvim",
+                },
+            },
         },
     },
 
